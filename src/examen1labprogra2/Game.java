@@ -57,67 +57,65 @@ public class Game extends RentItem implements MenuActions {
 public void ejecutarOpcion(int opcion) {
     switch (opcion) {
         case 1:
-            // Pedir fecha de publicación y actualizarla con validación de mes y día
+            
             try {
-                int year = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año de publicación:"));
+                int year = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año de publicacion:"));
                 
-                // Validación del mes
                 int month = 0;
                 while (true) {
                     try {
                         month = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el mes de publicación (1-12):"));
                         if (month >= 1 && month <= 12) {
-                            break; // Mes válido
+                            break; 
                         } else {
-                            JOptionPane.showMessageDialog(null, "Mes no válido. Por favor, ingrese un número entre 1 y 12.");
+                            JOptionPane.showMessageDialog(null, "Mes no valido. Por favor, ingrese un numero entre 1 y 12.");
                         }
                     } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Entrada no válida. Ingrese un número entre 1 y 12.");
+                        JOptionPane.showMessageDialog(null, "Entrada no valida. Ingrese un número entre 1 y 12.");
                     }
                 }
 
-                // Validación del día
                 int day = 0;
                 while (true) {
                     try {
-                        day = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el día de publicación (1-31):"));
+                        day = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dia de publicación (1-31):"));
                         if (day >= 1 && day <= 31) {
-                            break; // Día válido
+                            break;
                         } else {
-                            JOptionPane.showMessageDialog(null, "Día no válido. Por favor, ingrese un número entre 1 y 31.");
+                            JOptionPane.showMessageDialog(null, "Dia no valido. Por favor, ingrese un numero entre 1 y 31.");
                         }
                     } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Entrada no válida. Ingrese un número entre 1 y 31.");
+                        JOptionPane.showMessageDialog(null, "Entrada no valida. Ingrese un numero entre 1 y 31.");
                     }
                 }
 
                 setFechaPublicacion(year, month, day);
-                JOptionPane.showMessageDialog(null, "Fecha de publicación actualizada.");
+                JOptionPane.showMessageDialog(null, "Fecha de publicacion actualizada.");
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Año no válido. Operación cancelada.");
+                JOptionPane.showMessageDialog(null, "Año no valido. Operacion cancelada.");
             }
             break;
 
         case 2:
-            // Pedir especificación y agregarla al arreglo
-            String especificacion = JOptionPane.showInputDialog("Ingrese una especificación:");
+            
+            String especificacion = JOptionPane.showInputDialog("Ingrese una especificacion:");
             if (especificacion != null && !especificacion.trim().isEmpty()) {
                 addEspecificacion(especificacion.trim());
-                JOptionPane.showMessageDialog(null, "Especificación agregada.");
+                JOptionPane.showMessageDialog(null, "Especificacion agregada.");
             } else {
-                JOptionPane.showMessageDialog(null, "Especificación no válida.");
+                JOptionPane.showMessageDialog(null, "Especificacion no valida.");
             }
             break;
 
         case 3:
-            // Mostrar todas las especificaciones guardadas
+            
             String especificaciones = getEspecificaciones();
             JOptionPane.showMessageDialog(null, especificaciones.isEmpty() ? "No hay especificaciones." : especificaciones, "Especificaciones", JOptionPane.INFORMATION_MESSAGE);
             break;
 
         default:
-            // Si la opción no es válida, no hacer nada
-            JOptionPane.showMessageDialog(null, "Opción no válida.");
+            
+            JOptionPane.showMessageDialog(null, "Opción no valida.");
     }
 }
 }
